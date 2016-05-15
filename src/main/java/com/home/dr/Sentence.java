@@ -77,5 +77,11 @@ public class Sentence {
 		return words;
 	}
 
-	
+	public void setWords(List<Word> words) {
+		this.words = words;
+	}
+
+	public void setNamedEntities(List<NamedEntity> namedEntities) {
+		this.namedEntities = namedEntities;
+	}
 }

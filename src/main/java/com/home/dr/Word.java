@@ -22,6 +22,7 @@ public class Word {
 	
 	int begin;
 	int characterBegin;
+	int stemEnd;
 	int characterEnd;
 	int end;
 	

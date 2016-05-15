@@ -11,25 +11,12 @@ public class Document {
 
 	String text;
 
-	SentenceTokenizer sentenceTokenizer = new SentenceTokenizer();
-	
-	WordTokenizer wordTokenizer = new WordTokenizer();
-	
-	NamedEntityExtractor namedEntityExtractor = new NamedEntityExtractor();
-	
 	List<Sentence> sentences = new ArrayList<Sentence>();
 	
-	public Document() throws Exception {}
+	public Document() {}
 	
 	public Document(String text) {
 		this.text = text;
-		
-		sentences = sentenceTokenizer.getSentences(this);
-		
-		for(Sentence s : sentences) {
-			s.words = wordTokenizer.getWords(s);
-			s.namedEntities = namedEntityExtractor.getNamedEntities(s);
-		}
 	}
 	
 	public void printSentences() {
@@ -60,5 +47,7 @@ public class Document {
 		return sentences;
 	}
 
-	
+	public void setSentences(List<Sentence> sentences) {
+		this.sentences = sentences;
+	}
 }

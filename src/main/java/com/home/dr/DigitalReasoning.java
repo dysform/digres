@@ -14,8 +14,11 @@ public class DigitalReasoning {
 		dr.run();
 	}
 	
-	String inputFileName = "c:\\users\\diman\\desktop\\NLP_test\\nlp_data.txt";
-	//String inputFileName = "c:\\users\\diman\\desktop\\NLP_test\\d03.txt";
+	//String inputFileName = "c:\\users\\diman\\desktop\\NLP_test\\nlp_data.txt";
+	
+	String inputFileName = "c:\\users\\diman\\desktop\\NLP_test\\d10.txt";
+	
+	String outputFileName = "c:\\users\\diman\\desktop\\NLP_test\\output.txt";
 	
 	// Assumptions
 	// Sentence ends if 
@@ -23,6 +26,7 @@ public class DigitalReasoning {
 	// 2. It is followed by one or more white space characters of white spaces
 	// 3. the followed by a capital letter or a number.
 	public void run() throws Exception {
+
 		Document doc = new Document(FileUtils.readFileToString(new File(inputFileName)));
 		
 		doc.printSentences();
@@ -37,7 +41,7 @@ public class DigitalReasoning {
 		
 		doc.printNamedEntities();
 		
-		//outputToXML(doc);
+		outputToXML(doc);
 	}
 
 	private void outputToXML(Document doc) throws Exception {
@@ -49,6 +53,6 @@ public class DigitalReasoning {
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 		jaxbMarshaller.marshal(doc, file);
-		jaxbMarshaller.marshal(doc, System.out);
+		//jaxbMarshaller.marshal(doc, System.out);
 	}
 }

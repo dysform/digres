@@ -1,33 +1,19 @@
 package com.home.dr;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.apache.commons.io.FileUtils;
-
 public class NamedEntityExtractor {
-	
-	static String nerFileName = "c:\\users\\diman\\desktop\\NLP_test\\NER.txt";
-	
+
 	public Set<String> entities = new TreeSet<String>();
-	
-	public NamedEntityExtractor() {
-		
-		try{
-			List<String> lines = FileUtils.readLines(new File(nerFileName));
-			
-			entities.addAll(lines);
-			
-			entities.remove("");
-		}
-		catch(Exception e) {
-			throw new RuntimeException(e);
-		}
+
+	public NamedEntityExtractor(List<String> entities) {
+		this.entities.addAll(entities);
+		this.entities.remove("");
 	}
-	
+
 	public List<NamedEntity> getNamedEntities(Sentence s) {
 		
 		List<NamedEntity> retList = new ArrayList<NamedEntity>();

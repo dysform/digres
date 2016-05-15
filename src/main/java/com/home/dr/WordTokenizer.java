@@ -7,14 +7,11 @@ import java.util.regex.Pattern;
 
 public class WordTokenizer {
 	
-	String regex = "\\s|$";
+	String regex = "(?<=\\S)(?=\\s)|(?<=\\s)(?=\\S)|$";
 	
 	Pattern pattern = Pattern.compile(regex);
 
 	public List<Word> getWords(Sentence s) {
-		
-		String text = s.getFullText();
-
 		Matcher m = pattern.matcher(s.getText());
 
 		ArrayList<Word> retList = new ArrayList<Word>();
@@ -26,11 +23,9 @@ public class WordTokenizer {
 
 		while(m.find()) {
 			w.characterEnd = m.start();
-			w.end = w.characterEnd;
 			
-			while(w.end < s.getFullText().length() && Character.isWhitespace(text.charAt(w.end))) {
-				w.end++;
-			}
+			m.find();
+			w.end = m.start();
 			
 			retList.add(w);
 			
@@ -67,7 +62,7 @@ public class WordTokenizer {
 			i--;
 		}
 		
-		if(text.charAt(i) == ',' || text.charAt(i)==';') {
+		if(i>= 0 && (text.charAt(i) == ',' || text.charAt(i)==';')) {
 			word.hasComma = true;
 		}
 		
