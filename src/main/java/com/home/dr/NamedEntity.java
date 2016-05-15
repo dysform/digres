@@ -41,6 +41,21 @@ public class NamedEntity {
 	public int getEnd() {
 		return end;
 	}
+	
+	@XmlElement 
+	public int getAbsoluteBegin() {
+		return sentence.begin + sentence.words.get(begin).begin;
+	}
+	
+	@XmlElement 
+	public int getAbsoluteEnd() {
+		return sentence.begin + sentence.words.get(end-1).characterEnd;
+	}
+	
+	@XmlElement
+	public String getAbsoluteText() {
+		return sentence.doc.text.substring(getAbsoluteBegin(), getAbsoluteEnd());
+	}
 
 	public String toString() {
 		String out = new String();

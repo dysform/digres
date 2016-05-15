@@ -5,6 +5,20 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * 
+ * very simple implementation
+ * 
+ * put all named entities in a set
+ * 
+ * find islands of capitalized words (alos of, de) in the sentence
+ * in each island, for each continuous variation of the island, construct
+ * entity name without punctuation and check if it exists in
+ * the set
+ * 
+ * @author diman
+ *
+ */
 public class NamedEntityExtractor {
 
 	public Set<String> entities = new TreeSet<String>();

@@ -5,6 +5,18 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * assume sentence does not start with white space
+ * look for word boundaries with lookaround regex
+ * within word characters find other important markers
+ * such as commas and other punctuation
+ * 
+ * the begin->end is the whole word+following whitespace
+ * 
+ * @author Dmitriy Stolyarov
+ *
+ */
 public class WordTokenizer {
 	
 	String regex = "(?<=\\S)(?=\\s)|(?<=\\s)(?=\\S)|$";
