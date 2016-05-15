@@ -16,6 +16,8 @@ public class Sentence {
 	
 	List<Word> words;
 	
+	List<NamedEntity> namedEntities;
+	
 	public Sentence() {}
 	
 	public Sentence(Document doc, int begin, int end) {
@@ -49,6 +51,12 @@ public class Sentence {
 		System.out.println();
 	}
 	
+	public void printNamedEntities() {
+		for(NamedEntity ent : namedEntities) {
+			System.out.println(ent);
+		}
+	}
+	
 	@XmlElement
 	public int getBegin() {
 		return begin;
@@ -68,4 +76,6 @@ public class Sentence {
 	public List<Word> getWords() {
 		return words;
 	}
+
+	
 }

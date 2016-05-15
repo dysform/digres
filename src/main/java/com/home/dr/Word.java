@@ -8,6 +8,8 @@ public class Word {
 	
 	Sentence sentence;
 	
+	boolean hasComma;
+	
 	public Word(){}
 	
 	public Word(Sentence s) {
@@ -55,5 +57,15 @@ public class Word {
 	@XmlElement
 	public int getEnd() {
 		return end;
+	}
+	
+	public String getStemText() {
+		String c = getCharacterText();
+
+		if(c.length() > 2 && !Character.isAlphabetic(c.charAt(c.length()-2))) {
+			return c.substring(0, c.length()-2);
+		}
+		
+		return c;
 	}
 }

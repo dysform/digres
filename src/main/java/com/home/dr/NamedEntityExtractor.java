@@ -1,53 +1,102 @@
 package com.home.dr;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import org.apache.commons.io.FileUtils;
 
 public class NamedEntityExtractor {
+	
+	static String nerFileName = "c:\\users\\diman\\desktop\\NLP_test\\NER.txt";
+	
+	public Set<String> entities = new TreeSet<String>();
+	
+	public NamedEntityExtractor() {
+		
+		try{
+			List<String> lines = FileUtils.readLines(new File(nerFileName));
+			
+			entities.addAll(lines);
+			
+			entities.remove("");
+		}
+		catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public List<NamedEntity> getNamedEntities(Sentence s) {
 		
 		List<NamedEntity> retList = new ArrayList<NamedEntity>();
 		
 		int left = 0; int right = 0;
-		boolean state = false;
+		boolean state = true;
 
-		for(int i = 1;i<s.words.size();i++) {
-
-			String text = s.words.get(i).getCharacterText();
+		for(int i = 0;i<s.words.size();i++) {
+			String text = s.words.get(i).getStemText();
 			
-			if(isCap(text) && !state) {
+			if(isCap(text)) {
+				right++;
+				
+				if(s.words.get(i).hasComma) {
+					retList.addAll(findEntities(s, left, right));
+
+					left = i+1;
+					right = i+1;
+					
+					state = false;
+					
+				} else {
 					state = true;
-					left = i;
-					right = i;
+				}
 			}
-			
-			if(isCap(text) && (state || i==1)) {
-					right++;
-			}
-			
-			if(isCap(text) && state) {
-				state = false;
-				left = i;
-			}
-			
+
 			if(!isCap(text) && !state) {
 				left++;
+				right++;
 			}
 		
 			if(!isCap(text) && state) {
-				NamedEntity ne = new NamedEntity(s, left, right);
-				retList.add(ne);
+				retList.addAll(findEntities(s, left, right));
+
+				left = i+1;
+				right = i+1;
+				
+				state = false;
 			}
 		}
 		
-		return null;
+		return retList;
 	}
 	
+	private List<NamedEntity> findEntities(Sentence s, int left, int right) {
+		int n = right - left;
+		
+		List<NamedEntity> retList = new ArrayList<NamedEntity>();
+		
+		for(int i=0;i<n;i++) {
+			NamedEntity ne = new NamedEntity(s,left+i,0);
+			
+			for(int j=i+1;j<n+1;j++) {
+				ne.end = left+j;
+				
+				if(entities.contains(ne.toString())) {
+					retList.add(new NamedEntity(s, ne.begin, ne.end));
+				}
+			}
+		}
+		
+		return retList;
+	}
+
 	boolean isCap(String s) {
 		if(Character.isUpperCase(s.charAt(0)))
 			return true;
 		
-		if(s.equals("of")) 
+		if(s.equals("of") || s.equals("de")) 
 			return true;
 		
 		return false;

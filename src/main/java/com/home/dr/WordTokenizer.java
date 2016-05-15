@@ -63,6 +63,14 @@ public class WordTokenizer {
 		
 		i = text.length()-1;
 		
+		while(i >= 0 && Character.isWhitespace(text.charAt(i))) {
+			i--;
+		}
+		
+		if(text.charAt(i) == ',' || text.charAt(i)==';') {
+			word.hasComma = true;
+		}
+		
 		while(i >= 0 && isSymbol(text.charAt(i))) {
 			i--;
 		}

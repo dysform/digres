@@ -12,4 +12,17 @@ public class NamedEntity {
 		this.end = right;
 	}
 	
+	public String toString() {
+		String out = new String();
+		
+		for(int i=begin;i<end;i++) {
+			out += sentence.words.get(i).getStemText();
+			if(i<end-1) {
+				out+= " ";
+			}
+		}
+		
+		return out;
+	}
+	
 }

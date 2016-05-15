@@ -15,9 +15,11 @@ public class Document {
 	
 	WordTokenizer wordTokenizer = new WordTokenizer();
 	
+	NamedEntityExtractor namedEntityExtractor = new NamedEntityExtractor();
+	
 	List<Sentence> sentences = new ArrayList<Sentence>();
 	
-	public Document() {}
+	public Document() throws Exception {}
 	
 	public Document(String text) {
 		this.text = text;
@@ -26,6 +28,7 @@ public class Document {
 		
 		for(Sentence s : sentences) {
 			s.words = wordTokenizer.getWords(s);
+			s.namedEntities = namedEntityExtractor.getNamedEntities(s);
 		}
 	}
 	
@@ -41,6 +44,12 @@ public class Document {
 		}
 	}
 	
+	public void printNamedEntities() {
+		for(Sentence s : sentences) {
+			s.printNamedEntities();
+		}
+	}
+	
 	@XmlElement
 	public String getText() {
 		 return text;
@@ -50,4 +59,6 @@ public class Document {
 	public List<Sentence> getSentences() {
 		return sentences;
 	}
+
+	
 }
