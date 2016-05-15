@@ -46,7 +46,6 @@ public class Document {
 	public List<Sentence> getSentences() {
 		return sentences;
 	}
-
 	public void setSentences(List<Sentence> sentences) {
 		this.sentences = sentences;
 	}

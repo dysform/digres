@@ -4,30 +4,23 @@ import java.io.File;
 
 import org.apache.commons.io.FileUtils;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-
 public class DigitalReasoning {
 	
-	public static void main(String[] args) throws Exception {
-		DigitalReasoning dr = new DigitalReasoning();
-		dr.run();
-	}
-	
-	//String inputFileName = "c:\\users\\diman\\desktop\\NLP_test\\nlp_data.txt";
-	
-	String inputFileName = "c:\\users\\diman\\desktop\\NLP_test\\d10.txt";
-	
-	String outputFileName = "c:\\users\\diman\\desktop\\NLP_test\\output.txt";
-	
-	// Assumptions
-	// Sentence ends if 
-	// 1. There is a . or ? or !
-	// 2. It is followed by one or more white space characters of white spaces
-	// 3. the followed by a capital letter or a number.
-	public void run() throws Exception {
+	String outputDir;
 
-		Document doc = new Document(FileUtils.readFileToString(new File(inputFileName)));
+	public DigitalReasoning(String outputDir) {
+		this.outputDir = outputDir;
+	}
+
+	public void run() throws Exception {
+		ClassLoader classLoader = getClass().getClassLoader();
+		
+		String inputFileName = classLoader.getResource("nlp_data.txt").toURI().getPath();
+		String nerFileName = classLoader.getResource("NER.txt").toURI().getPath();
+		
+		Document doc = new DocumentBuilder().buildDocument(
+				FileUtils.readFileToString(new File(inputFileName)),
+				FileUtils.readLines(new File(nerFileName)));
 		
 		doc.printSentences();
 		
@@ -41,18 +34,11 @@ public class DigitalReasoning {
 		
 		doc.printNamedEntities();
 		
-		outputToXML(doc);
+		DocumentXML.printDocument(doc, outputDir+"/objectModel.xml");
 	}
-
-	private void outputToXML(Document doc) throws Exception {
-		File file = new File("C:\\users\\diman\\file.xml");
-		JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);
-		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-		// output pretty printed
-		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-		jaxbMarshaller.marshal(doc, file);
-		//jaxbMarshaller.marshal(doc, System.out);
+	
+	public static void main(String[] args) throws Exception {
+		DigitalReasoning dr = new DigitalReasoning(args[0]);
+		dr.run();
 	}
 }

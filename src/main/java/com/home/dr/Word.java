@@ -30,7 +30,6 @@ public class Word {
 		return getFullText();
 	}
 	
-	@XmlElement
 	public String getFullText() {
 		return sentence.getFullText().substring(begin, end);
 	}

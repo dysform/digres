@@ -30,7 +30,6 @@ public class Sentence {
 		this.doc = doc;
 	}
 	
-	@XmlElement
 	public String getFullText() {
 		return doc.text.substring(begin, end);
 	}
@@ -75,6 +74,11 @@ public class Sentence {
 	@XmlElement
 	public List<Word> getWords() {
 		return words;
+	}
+	
+	@XmlElement
+	public List<NamedEntity> getNamedEntities() {
+		return namedEntities;
 	}
 
 	public void setWords(List<Word> words) {

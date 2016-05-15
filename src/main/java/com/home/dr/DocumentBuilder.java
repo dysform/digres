@@ -13,7 +13,7 @@ public class DocumentBuilder {
 	
 	public Document buildDocument(String text, List<String> entities) {
 		
-		Document doc = new Document();
+		Document doc = new Document(text);
 		namedEntityExtractor = new NamedEntityExtractor(entities);
 		
 		doc.setSentences(sentenceTokenizer.getSentences(doc));
