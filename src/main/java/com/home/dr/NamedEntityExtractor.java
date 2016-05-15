@@ -59,7 +59,7 @@ public class NamedEntityExtractor {
 				right++;
 			}
 		
-			if(!isCap(text) && state) {
+			if((!isCap(text) && state) || (isCap(text) && i==s.words.size()-1)) {
 				retList.addAll(findEntities(s, left, right));
 
 				left = i+1;
