@@ -4,6 +4,9 @@ import java.io.File;
 
 import org.apache.commons.io.FileUtils;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
 public class DigitalReasoning {
 	
 	public static void main(String[] args) throws Exception {
@@ -22,12 +25,22 @@ public class DigitalReasoning {
 
 		Document doc = new Document(FileUtils.readFileToString(new File(inputFileName)));
 		
-		doc.printSentences();
+		//doc.printSentences();
 		
 		System.out.println("");
 		System.out.println("");
 		
-		doc.printWords();
+		//doc.printWords();
 		
+		File file = new File("C:\\users\\diman\\file.xml");
+		JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+		// output pretty printed
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+		jaxbMarshaller.marshal(doc, file);
+		jaxbMarshaller.marshal(doc, System.out);
+
 	}
 }

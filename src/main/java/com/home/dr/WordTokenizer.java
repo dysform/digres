@@ -49,13 +49,9 @@ public class WordTokenizer {
 	}
 
 	private void setAllBoundaries(Word word) {
-		if(word.getText().equals("... ")) {
-			System.out.println("Fuck You");
-		}
-		
 		int i = 0;
 		
-		String text = word.getText();
+		String text = word.getFullText();
 		
 		while(i < text.length() && isSymbol(text.charAt(i))) {
 			i++;
