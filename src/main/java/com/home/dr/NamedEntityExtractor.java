@@ -11,10 +11,11 @@ import java.util.TreeSet;
  * 
  * put all named entities in a set
  * 
- * find islands of capitalized words (alos of, de) in the sentence
+ * find islands of capitalized words (also of, de) in the sentence
  * in each island, for each continuous variation of the island, construct
  * entity name without punctuation and check if it exists in
  * the set
+ * 
  * 
  * @author diman
  *
@@ -38,7 +39,10 @@ public class NamedEntityExtractor {
 		for(int i = 0;i<s.words.size();i++) {
 			String text = s.words.get(i).getStemText();
 			
-			if(isCap(text)) {
+			boolean isCap = isCap(text);
+
+			// if capital, add this word to current island
+			if(isCap) {
 				right++;
 				
 				if(s.words.get(i).hasComma) {
@@ -54,12 +58,15 @@ public class NamedEntityExtractor {
 				}
 			}
 
-			if(!isCap(text) && !state) {
+			// if not capital and not part of island move on
+			if(!isCap && !state) {
 				left++;
 				right++;
 			}
 		
-			if((!isCap(text) && state) || (isCap(text) && i==s.words.size()-1)) {
+			// if not capital and island is running, or at the end of sentence and island is running
+			// get possible entities from the island, move on
+			if((!isCap && state) || (i==s.words.size()-1 && state)) {
 				retList.addAll(findEntities(s, left, right));
 
 				left = i+1;
@@ -77,6 +84,7 @@ public class NamedEntityExtractor {
 		
 		List<NamedEntity> retList = new ArrayList<NamedEntity>();
 		
+		// for all possible combinations
 		for(int i=0;i<n;i++) {
 			NamedEntity ne = new NamedEntity(s,left+i,0);
 			

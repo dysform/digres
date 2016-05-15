@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.home.dr.Document;
 import com.home.dr.DocumentBuilder;
+import com.home.dr.DocumentXML;
 
 public class DigitalReasoningTest {
 	
@@ -18,10 +19,12 @@ public class DigitalReasoningTest {
         
 		ClassLoader classLoader = getClass().getClassLoader();
 
-		String text = IOUtils.toString(classLoader.getResourceAsStream("test-text.txt"));
-		List<String> entities = IOUtils.readLines(classLoader.getResourceAsStream("test-text.txt"));
+		String text = IOUtils.toString(classLoader.getResourceAsStream("testtext.txt"));
+		List<String> entities = IOUtils.readLines(classLoader.getResourceAsStream("testner.txt"));
 		
 		doc = new DocumentBuilder().buildDocument(text, entities);
+		
+		DocumentXML.printDocument(doc, null);
     }
 	
 	@Test

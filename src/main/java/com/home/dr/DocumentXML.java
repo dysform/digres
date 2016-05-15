@@ -7,12 +7,15 @@ import javax.xml.bind.Marshaller;
 
 public class DocumentXML {
 	public static void printDocument(Document doc, String fileName) throws Exception {
-		File file = new File(fileName);
+		File file = null;
+		if(fileName!=null) 
+			file = new File(fileName);
 		JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 		jaxbMarshaller.marshal(doc, System.out);
-		jaxbMarshaller.marshal(doc, file);
+		if(file!=null)
+			jaxbMarshaller.marshal(doc, file);
 	}
 }
