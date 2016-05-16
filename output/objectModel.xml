@@ -1,73 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <document>
-    <namedEntities>
-        <absoluteBegin>88</absoluteBegin>
-        <absoluteEnd>101</absoluteEnd>
-        <absoluteText>Ernst Haeckel</absoluteText>
-        <begin>15</begin>
-        <end>17</end>
-        <entityString>Ernst Haeckel</entityString>
-    </namedEntities>
-    <namedEntities>
-        <absoluteBegin>367</absoluteBegin>
-        <absoluteEnd>382</absoluteEnd>
-        <absoluteText>Franz Ferdinand</absoluteText>
-        <begin>13</begin>
-        <end>15</end>
-        <entityString>Franz Ferdinand</entityString>
-    </namedEntities>
-    <namedEntities>
-        <absoluteBegin>417</absoluteBegin>
-        <absoluteEnd>432</absoluteEnd>
-        <absoluteText>Austria-Hungary</absoluteText>
-        <begin>22</begin>
-        <end>23</end>
-        <entityString>Austria-Hungary</entityString>
-    </namedEntities>
-    <namedEntities>
-        <absoluteBegin>458</absoluteBegin>
-        <absoluteEnd>473</absoluteEnd>
-        <absoluteText>Gavrilo Princip</absoluteText>
-        <begin>26</begin>
-        <end>28</end>
-        <entityString>Gavrilo Princip</entityString>
-    </namedEntities>
-    <namedEntities>
-        <absoluteBegin>504</absoluteBegin>
-        <absoluteEnd>512</absoluteEnd>
-        <absoluteText>Sarajevo</absoluteText>
-        <begin>35</begin>
-        <end>36</end>
-        <entityString>Sarajevo</entityString>
-    </namedEntities>
-    <namedEntities>
-        <absoluteBegin>552</absoluteBegin>
-        <absoluteEnd>567</absoluteEnd>
-        <absoluteText>Austria-Hungary</absoluteText>
-        <begin>7</begin>
-        <end>8</end>
-        <entityString>Austria-Hungary</entityString>
-    </namedEntities>
-    <namedEntities>
-        <absoluteBegin>609</absoluteBegin>
-        <absoluteEnd>615</absoluteEnd>
-        <absoluteText>Serbia</absoluteText>
-        <begin>15</begin>
-        <end>16</end>
-        <entityString>Serbia</entityString>
-    </namedEntities>
     <sentences>
         <begin>0</begin>
         <characterEnd>265</characterEnd>
         <end>267</end>
-        <namedEntities>
-            <absoluteBegin>88</absoluteBegin>
-            <absoluteEnd>101</absoluteEnd>
-            <absoluteText>Ernst Haeckel</absoluteText>
-            <begin>15</begin>
-            <end>17</end>
-            <entityString>Ernst Haeckel</entityString>
-        </namedEntities>
         <text>The term's "First World War" was first used in September 1914 by the German philosopher Ernst Haeckel, who claimed that "there is no doubt that the course and character of the feared 'European War' ... will become the first world war in the full sense of the word."</text>
         <words>
             <begin>0</begin>
@@ -451,38 +387,6 @@
         <begin>290</begin>
         <characterEnd>513</characterEnd>
         <end>514</end>
-        <namedEntities>
-            <absoluteBegin>367</absoluteBegin>
-            <absoluteEnd>382</absoluteEnd>
-            <absoluteText>Franz Ferdinand</absoluteText>
-            <begin>13</begin>
-            <end>15</end>
-            <entityString>Franz Ferdinand</entityString>
-        </namedEntities>
-        <namedEntities>
-            <absoluteBegin>417</absoluteBegin>
-            <absoluteEnd>432</absoluteEnd>
-            <absoluteText>Austria-Hungary</absoluteText>
-            <begin>22</begin>
-            <end>23</end>
-            <entityString>Austria-Hungary</entityString>
-        </namedEntities>
-        <namedEntities>
-            <absoluteBegin>458</absoluteBegin>
-            <absoluteEnd>473</absoluteEnd>
-            <absoluteText>Gavrilo Princip</absoluteText>
-            <begin>26</begin>
-            <end>28</end>
-            <entityString>Gavrilo Princip</entityString>
-        </namedEntities>
-        <namedEntities>
-            <absoluteBegin>504</absoluteBegin>
-            <absoluteEnd>512</absoluteEnd>
-            <absoluteText>Sarajevo</absoluteText>
-            <begin>35</begin>
-            <end>36</end>
-            <entityString>Sarajevo</entityString>
-        </namedEntities>
         <text>The immediate trigger for war was the 28 June 1914 assassination of Archduke Franz Ferdinand of Austria, heir to the throne of Austria-Hungary, by Yugoslav nationalist Gavrilo Princip (19 years old at the time) in Sarajevo.</text>
         <words>
             <begin>0</begin>
@@ -741,22 +645,6 @@
         <begin>514</begin>
         <characterEnd>701</characterEnd>
         <end>702</end>
-        <namedEntities>
-            <absoluteBegin>552</absoluteBegin>
-            <absoluteEnd>567</absoluteEnd>
-            <absoluteText>Austria-Hungary</absoluteText>
-            <begin>7</begin>
-            <end>8</end>
-            <entityString>Austria-Hungary</entityString>
-        </namedEntities>
-        <namedEntities>
-            <absoluteBegin>609</absoluteBegin>
-            <absoluteEnd>615</absoluteEnd>
-            <absoluteText>Serbia</absoluteText>
-            <begin>15</begin>
-            <end>16</end>
-            <entityString>Serbia</entityString>
-        </namedEntities>
         <text>This set off a diplomatic crisis when Austria-Hungary delivered an ultimatum to the Kingdom of Serbia, and entangled international alliances formed over the previous decades were invoked.</text>
         <words>
             <begin>0</begin>
