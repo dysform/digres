@@ -21,19 +21,7 @@ public class DigitalReasoning {
 		Document doc = new DocumentBuilder().buildDocument(
 				FileUtils.readFileToString(new File(inputFileName)),
 				FileUtils.readLines(new File(nerFileName)));
-		
-		doc.printSentences();
-		
-		System.out.println("");
-		System.out.println("");
-		
-		doc.printWords();
-		
-		System.out.println("");
-		System.out.println("");
-		
-		doc.printNamedEntities();
-		
+
 		DocumentXML.printDocument(doc, outputDir+"/objectModel.xml");
 	}
 	
