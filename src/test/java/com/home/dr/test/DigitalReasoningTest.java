@@ -3,6 +3,7 @@ package com.home.dr.test;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import com.home.dr.Document;
 import com.home.dr.DocumentBuilder;
@@ -19,7 +20,10 @@ public class DigitalReasoningTest {
 		String text = IOUtils.toString(classLoader.getResourceAsStream("testtext.txt"));
 		
 		doc = new DocumentBuilder().buildDocument(text);
-		
+    }
+	
+	@Test
+	public void testApp() throws Exception {
 		Assert.assertEquals(4, doc.getSentences().size());
 		
 		Assert.assertEquals(5, doc.getSentences().get(0).getWords().size());
@@ -36,5 +40,5 @@ public class DigitalReasoningTest {
 		Assert.assertEquals("EntOne", doc.getSentences().get(2).getWords().get(3).getStemText());
 		Assert.assertEquals("EntOne's", doc.getSentences().get(2).getWords().get(3).getCharacterText());
 		Assert.assertEquals("\"EntOne's,\" ", doc.getSentences().get(2).getWords().get(3).getFullText());
-    }
+	}
 }
