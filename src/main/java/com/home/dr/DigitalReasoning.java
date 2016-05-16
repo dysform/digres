@@ -16,11 +16,9 @@ public class DigitalReasoning {
 		ClassLoader classLoader = getClass().getClassLoader();
 		
 		String inputFileName = classLoader.getResource("nlp_data.txt").toURI().getPath();
-		String nerFileName = classLoader.getResource("NER.txt").toURI().getPath();
 		
 		Document doc = new DocumentBuilder().buildDocument(
-				FileUtils.readFileToString(new File(inputFileName)),
-				FileUtils.readLines(new File(nerFileName)));
+				FileUtils.readFileToString(new File(inputFileName)));
 
 		DocumentXML.printDocument(doc, outputDir+"/objectModel.xml");
 	}

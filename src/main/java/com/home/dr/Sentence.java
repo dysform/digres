@@ -15,9 +15,7 @@ public class Sentence {
 	int end;
 	
 	List<Word> words;
-	
-	List<NamedEntity> namedEntities;
-	
+
 	public Sentence() {}
 	
 	public Sentence(Document doc, int begin, int end) {
@@ -49,13 +47,7 @@ public class Sentence {
 		}
 		System.out.println();
 	}
-	
-	public void printNamedEntities() {
-		for(NamedEntity ent : namedEntities) {
-			System.out.println(ent);
-		}
-	}
-	
+
 	@XmlElement
 	public int getBegin() {
 		return begin;
@@ -75,17 +67,8 @@ public class Sentence {
 	public List<Word> getWords() {
 		return words;
 	}
-	
-	@XmlElement
-	public List<NamedEntity> getNamedEntities() {
-		return namedEntities;
-	}
 
 	public void setWords(List<Word> words) {
 		this.words = words;
-	}
-
-	public void setNamedEntities(List<NamedEntity> namedEntities) {
-		this.namedEntities = namedEntities;
 	}
 }

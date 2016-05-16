@@ -1,7 +1,5 @@
 package com.home.dr.test;
 
-import java.util.List;
-
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,9 +17,8 @@ public class DigitalReasoningTest {
 		ClassLoader classLoader = getClass().getClassLoader();
 
 		String text = IOUtils.toString(classLoader.getResourceAsStream("testtext.txt"));
-		List<String> entities = IOUtils.readLines(classLoader.getResourceAsStream("testner.txt"));
 		
-		doc = new DocumentBuilder().buildDocument(text, entities);
+		doc = new DocumentBuilder().buildDocument(text);
 		
 		Assert.assertEquals(4, doc.getSentences().size());
 		
@@ -39,10 +36,5 @@ public class DigitalReasoningTest {
 		Assert.assertEquals("EntOne", doc.getSentences().get(2).getWords().get(3).getStemText());
 		Assert.assertEquals("EntOne's", doc.getSentences().get(2).getWords().get(3).getCharacterText());
 		Assert.assertEquals("\"EntOne's,\" ", doc.getSentences().get(2).getWords().get(3).getFullText());
-		
-		Assert.assertEquals(5, doc.getSentences().get(2).getNamedEntities().size());
-		Assert.assertEquals(1, doc.getSentences().get(3).getNamedEntities().size());
-		
-		Assert.assertEquals(6, doc.getNamedEntities().size());
     }
 }

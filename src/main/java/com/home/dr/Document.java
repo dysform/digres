@@ -30,13 +30,7 @@ public class Document {
 			s.printWords();
 		}
 	}
-	
-	public void printNamedEntities() {
-		for(Sentence s : sentences) {
-			s.printNamedEntities();
-		}
-	}
-	
+
 	@XmlElement
 	public String getText() {
 		 return text;
@@ -46,18 +40,7 @@ public class Document {
 	public List<Sentence> getSentences() {
 		return sentences;
 	}
-	
-	@XmlElement
-	public List<NamedEntity> getNamedEntities() {
-		List<NamedEntity> namedEntities = new ArrayList<NamedEntity>();
-		
-		for(Sentence s : sentences) {
-			namedEntities.addAll(s.getNamedEntities());
-		}
-		
-		return namedEntities;
-	}
-	
+
 	public void setSentences(List<Sentence> sentences) {
 		this.sentences = sentences;
 	}
