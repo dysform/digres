@@ -63,7 +63,7 @@ public class DigitalReasoning {
 	    	results.add(b.output);
 	    }
 	    
-	    DocumentXML.printDocuments(results, "");
+	    DocumentXML.printDocuments(results, outputDir+"/objectModel.xml");
 	}
 	
 	public static void main(String[] args) throws Exception {
