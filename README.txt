@@ -51,4 +51,17 @@ final xml has only the master list of entities
 but each sentence also has them
 depending on requirenments, the individual sentence named entities don't need to be shown
 
-The XML output could probably be a little better given exact requirenments
+The XML output could be a little better given exact requirenments
+
+----------
+
+Each part of the assignment is in a different branch in git
+part1
+part2
+part3Threaded
+
+master branch has the readme
+
+a shaded jar is created, you can run 'java -jar digres-0.0.1-SNAPSHOT.jar input_dir output_dir'
+
+xml output to screen and to output.xml inside the output_dir
