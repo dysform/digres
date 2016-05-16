@@ -11,6 +11,12 @@ public class Documents {
 	
 	List<Document> docs;
 	
+	public Documents() {}
+	
+	public Documents(List<Document> results) {
+		this.docs = results;
+	}
+
 	@XmlElement
 	public List<Document> getDocuments() {
 		return docs;

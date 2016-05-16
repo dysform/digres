@@ -22,7 +22,7 @@ public class DigitalReasoning {
 	}
 
 	public void run() throws Exception {
-		ExecutorService ex = Executors.newFixedThreadPool(4);
+		ExecutorService ex = Executors.newFixedThreadPool(1);
 		
 		ClassLoader classLoader = getClass().getClassLoader();
 		
@@ -32,7 +32,7 @@ public class DigitalReasoning {
 
 	    Enumeration<? extends ZipEntry> entries = zipFile.entries();
 	    
-	    String nerFileName = classLoader.getResource("nlp_data.txt").toURI().getPath();
+	    String nerFileName = classLoader.getResource("NER.txt").toURI().getPath();
 	    List<String> entities = FileUtils.readLines(new File(nerFileName));
 
 	    List<DocumentBuilder> builders = new ArrayList<DocumentBuilder>();
@@ -40,7 +40,7 @@ public class DigitalReasoning {
 	    while(entries.hasMoreElements()){
 	        ZipEntry entry = entries.nextElement();
 	        
-	        if(entry.getName().startsWith("d") && entry.getName().endsWith("txt")) {
+	        if(entry.getName().startsWith("nlp_data/d") && entry.getName().endsWith("txt")) {
 	        	InputStream stream = zipFile.getInputStream(entry);
 	        	
 	        	DocumentBuilder builder = new DocumentBuilder(stream, entities);
@@ -63,7 +63,7 @@ public class DigitalReasoning {
 	    	results.add(b.output);
 	    }
 	    
-	    DocumentXML.printDocuments(results, outputDir+"/objectModel.xml");
+	    DocumentXML.printDocuments(new Documents(results), outputDir+"/objectModel.xml");
 	}
 	
 	public static void main(String[] args) throws Exception {
