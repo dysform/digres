@@ -31,6 +31,10 @@ public class DigitalReasoningTest {
 		Assert.assertEquals(8, doc.getSentences().get(2).getWords().size());
 		Assert.assertEquals(10, doc.getSentences().get(3).getWords().size());
 
+		Assert.assertEquals("EntOne", doc.getSentences().get(2).getWords().get(3).getStemText());
+		Assert.assertEquals("EntOne's", doc.getSentences().get(2).getWords().get(3).getCharacterText());
+		Assert.assertEquals("\"EntOne's,\" ", doc.getSentences().get(2).getWords().get(3).getFullText());
+		
 		Assert.assertEquals(5, doc.getSentences().get(2).getNamedEntities().size());
 		Assert.assertEquals(1, doc.getSentences().get(3).getNamedEntities().size());
 		
