@@ -16,23 +16,24 @@ import org.apache.commons.io.FileUtils;
 public class DigitalReasoning {
 	
 	String outputDir;
+	String inputDir;
 
-	public DigitalReasoning(String outputDir) {
+	public DigitalReasoning(String inputDir, String outputDir) {
+		this.inputDir = inputDir;
 		this.outputDir = outputDir;
 	}
 
 	public void run() throws Exception {
 		ExecutorService ex = Executors.newFixedThreadPool(1);
-		
-		ClassLoader classLoader = getClass().getClassLoader();
-		
-		String inputFileName = classLoader.getResource("nlp_data.zip").toURI().getPath();
+
+		String inputFileName = inputDir+"/nlp_data.zip";
 
 		ZipFile zipFile = new ZipFile(inputFileName);
-
+		
 	    Enumeration<? extends ZipEntry> entries = zipFile.entries();
 	    
-	    String nerFileName = classLoader.getResource("NER.txt").toURI().getPath();
+	    String nerFileName = inputDir+"/NER.txt";
+	    
 	    List<String> entities = FileUtils.readLines(new File(nerFileName));
 
 	    List<DocumentBuilder> builders = new ArrayList<DocumentBuilder>();
@@ -67,7 +68,7 @@ public class DigitalReasoning {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		DigitalReasoning dr = new DigitalReasoning(args[0]);
+		DigitalReasoning dr = new DigitalReasoning(args[0], args[1]);
 		dr.run();
 	}
 }
