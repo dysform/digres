@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 
 import com.home.dr.Document;
 import com.home.dr.DocumentBuilder;
