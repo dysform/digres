@@ -6,16 +6,17 @@ import org.apache.commons.io.FileUtils;
 
 public class DigitalReasoning {
 	
+	String inputDir;
 	String outputDir;
 
-	public DigitalReasoning(String outputDir) {
+	public DigitalReasoning(String inputDir, String outputDir) {
+		this.inputDir = inputDir;
 		this.outputDir = outputDir;
 	}
 
 	public void run() throws Exception {
-		ClassLoader classLoader = getClass().getClassLoader();
-		
-		String inputFileName = classLoader.getResource("nlp_data.txt").toURI().getPath();
+
+		String inputFileName = inputDir+"/nlp_data.txt";
 		
 		Document doc = new DocumentBuilder().buildDocument(
 				FileUtils.readFileToString(new File(inputFileName)));
@@ -24,7 +25,7 @@ public class DigitalReasoning {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		DigitalReasoning dr = new DigitalReasoning(args[0]);
+		DigitalReasoning dr = new DigitalReasoning(args[0], args[1]);
 		dr.run();
 	}
 }
