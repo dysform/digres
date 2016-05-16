@@ -44,18 +44,7 @@ public class NamedEntityExtractor {
 			// if capital, add this word to current island
 			if(isCap) {
 				right++;
-				
-				if(s.words.get(i).hasComma) {
-					retList.addAll(findEntities(s, left, right));
-
-					left = i+1;
-					right = i+1;
-					
-					state = false;
-					
-				} else {
-					state = true;
-				}
+				state = true;
 			}
 
 			// if not capital and not part of island move on
@@ -66,7 +55,7 @@ public class NamedEntityExtractor {
 		
 			// if not capital and island is running, or at the end of sentence and island is running
 			// get possible entities from the island, move on
-			if((!isCap && state) || (i==s.words.size()-1 && state)) {
+			if(state && (!isCap || i==s.words.size()-1 || s.words.get(i).hasComma)) {
 				retList.addAll(findEntities(s, left, right));
 
 				left = i+1;

@@ -74,7 +74,13 @@ public class WordTokenizer {
 			i--;
 		}
 		
-		if(i>= 0 && (text.charAt(i) == ',' || text.charAt(i)==';')) {
+		// get comma
+		if(i>= 0 && (text.charAt(i) == ',' || text.charAt(i)==';' || text.charAt(i)=='.')) {
+			word.hasComma = true;
+		}
+		
+		// get ,"
+		if(i>= 1 && (text.charAt(i-1) == ',' || text.charAt(i-1)==';' || text.charAt(i)=='.')) {
 			word.hasComma = true;
 		}
 		
