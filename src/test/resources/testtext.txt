@@ -1,5 +1,5 @@
 First sentence is completely normal.
 Second sentence hasCaps, commas, "quotes," and "more quotes."
-Third sentence has "EntOne", Ent Two Three Four.
+Third sentence has "EntOne's," Ent Two Three Four.
 
 Fourth sentence has One+One. this is not a new sentence.

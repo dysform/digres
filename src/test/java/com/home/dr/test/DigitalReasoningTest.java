@@ -30,6 +30,12 @@ public class DigitalReasoningTest {
 		Assert.assertEquals(8, doc.getSentences().get(1).getWords().size());
 		Assert.assertEquals(8, doc.getSentences().get(2).getWords().size());
 		Assert.assertEquals(10, doc.getSentences().get(3).getWords().size());
+		
+		Assert.assertEquals("\"quotes,\" ", doc.getSentences().get(1).getWords().get(4).getFullText());
+		Assert.assertEquals("quotes", doc.getSentences().get(1).getWords().get(4).getCharacterText());
+		
+		Assert.assertEquals("quotes.\"", doc.getSentences().get(1).getWords().get(7).getFullText());
+		Assert.assertEquals("quotes", doc.getSentences().get(1).getWords().get(7).getCharacterText());
 
 		Assert.assertEquals("EntOne", doc.getSentences().get(2).getWords().get(3).getStemText());
 		Assert.assertEquals("EntOne's", doc.getSentences().get(2).getWords().get(3).getCharacterText());
@@ -40,9 +46,4 @@ public class DigitalReasoningTest {
 		
 		Assert.assertEquals(6, doc.getNamedEntities().size());
     }
-	
-	@Test
-	public void testSentenceTokenizer() {	
-		
-	}
 }
